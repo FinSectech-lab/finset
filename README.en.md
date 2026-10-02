@@ -1,3 +1,4 @@
+English | [简体中文](README.md)
 # r0env
 
 Automatically match system timezone, locale, and browser fingerprint to the country of your proxy exit IP.
