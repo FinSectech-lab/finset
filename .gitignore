@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# 日志和输出
+*.log
+*.json
+!pyproject.toml
+
+# 打包产物
+r0env-*.zip
+r0env-*/
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# 测试缓存
+.pytest_cache/
+.coverage

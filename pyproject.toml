@@ -1,0 +1,12 @@
+[project]
+name = "r0env"
+version = "0.1.0"
+description = "IP-based environment consistency audit"
+requires-python = ">=3.9"
+dependencies = ["pydantic>=2.6,<3", "playwright>=1.45"]
+
+[project.scripts]
+r0env = "r0env.cli:main"
+
+[tool.setuptools]
+packages = ["r0env"]
