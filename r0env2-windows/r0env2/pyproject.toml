@@ -1,0 +1,21 @@
+[project]
+name = "r0env2"
+version = "0.2.0"
+description = "IP-based environment consistency audit"
+requires-python = ">=3.10"
+dependencies = ["pydantic>=2.6,<3", "playwright>=1.45", "tzlocal>=5.2,<6", "tzdata", "PyYAML>=6"]
+
+[project.scripts]
+r0env = "r0env.windows_cli:main"
+
+r0env2 = "r0env.windows_cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["r0env*"]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
