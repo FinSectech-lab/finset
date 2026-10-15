@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+*.log
+*.log.*
+*.zip
+*.sha256
+profile.json
+snapshot-*.json
+timer.json
+acceptance/
+.env

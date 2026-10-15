@@ -1,0 +1,16 @@
+[project]
+name = "r0env3"
+version = "0.1.2"
+description = "macOS environment consistency tools (preview)"
+requires-python = ">=3.10"
+dependencies = ["pydantic>=2.6,<3", "playwright>=1.45,<2", "tzdata", "PyYAML>=6"]
+[project.scripts]
+r0env = "r0env.macos_cli:main"
+r0env3 = "r0env.macos_cli:main"
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+[tool.setuptools.packages.find]
+include = ["r0env*"]
+[project.optional-dependencies]
+test = ["pytest>=8"]

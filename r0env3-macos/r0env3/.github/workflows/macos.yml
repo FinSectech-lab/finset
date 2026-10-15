@@ -1,0 +1,27 @@
+name: macOS smoke tests
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -e '.[test]'
+      - run: python -m pytest -q
+      - run: python -m r0env help
+      - run: python -m playwright install firefox
+      - name: Isolated Firefox offline smoke test (no host changes)
+        run: |
+          python - <<'PY'
+          from playwright.sync_api import sync_playwright
+          with sync_playwright() as p:
+              browser = p.firefox.launch(headless=True, firefox_user_prefs={'media.peerconnection.enabled': False})
+              page = browser.new_context(locale='ja-JP', timezone_id='Asia/Tokyo').new_page()
+              value = page.evaluate('() => [navigator.language, Intl.DateTimeFormat().resolvedOptions().timeZone, typeof RTCPeerConnection]')
+              assert value == ['ja-JP', 'Asia/Tokyo', 'undefined'], value
+              browser.close()
+          PY
